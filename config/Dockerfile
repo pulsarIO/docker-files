@@ -9,14 +9,15 @@ RUN echo "LANG=C.UTF-8" > /etc/default/locale
 RUN mkdir -p /opt/app
 WORKDIR /opt
 RUN git clone https://github.com/pulsarIO/jetstream.git
-WORKDIR /opt/Jetstream
-RUN git pull
+WORKDIR /opt/jetstream
+RUN git checkout jetstream-root-4.0.0
 RUN mvn -DskipTests clean install
+WORKDIR /opt/jetstream/configurationmanagement
 
-ENV project_version 3.2.1-SNAPSHOT
+ENV project_version 4.0.0
 ENV project_name configuration
 
-RUN cp configurationmanagement/target/${project_name}-${project_version}-bin.tar.gz /opt/app/${project_name}-${project_version}-bin.tar.gz
+RUN cp target/${project_name}-${project_version}-bin.tar.gz /opt/app/${project_name}-${project_version}-bin.tar.gz
 WORKDIR /opt/app
 RUN tar -zxvf ${project_name}-${project_version}-bin.tar.gz
 RUN ln -s /opt/app/${project_name}-${project_version} jetstreamapp
