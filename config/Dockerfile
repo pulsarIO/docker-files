@@ -10,11 +10,11 @@ RUN mkdir -p /opt/app
 WORKDIR /opt
 RUN git clone https://github.com/pulsarIO/jetstream.git
 WORKDIR /opt/jetstream
-RUN git checkout jetstream-root-4.0.0
+RUN git checkout jetstream-root-4.0.1
 WORKDIR /opt/jetstream/configurationmanagement
 RUN mvn -DskipTests clean install
 
-ENV project_version 4.0.0
+ENV project_version 4.0.1
 ENV project_name configuration
 
 RUN cp target/${project_name}-${project_version}-bin.tar.gz /opt/app/${project_name}-${project_version}-bin.tar.gz
