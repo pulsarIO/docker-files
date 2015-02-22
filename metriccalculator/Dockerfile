@@ -8,24 +8,13 @@ RUN echo "LANG=C.UTF-8" > /etc/default/locale
 # Build
 RUN mkdir -p /opt/app
 WORKDIR /opt
-RUN git clone https://github.com/pulsarIO/jetstream.git
-WORKDIR /opt/Jetstream
-RUN git pull
-RUN mvn -DskipTests clean install
-
-WORKDIR /opt
-RUN git clone https://github.com/pulsarIO/jetstream-esper.git
-WORKDIR /opt/jetstream-esper
-RUN git pull
-RUN mvn -DskipTests clean install
-
-WORKDIR /opt
 RUN git clone https://github.com/pulsarIO/realtime-analytics.git
+WORKDIR /opt/realtime-analytics/
+RUN git checkout realtime-analytics-1.0.0
 WORKDIR /opt/realtime-analytics/metriccalculator
-RUN git pull
 RUN mvn -DskipTests clean install
 
-ENV project_version 1.0-SNAPSHOT
+ENV project_version 1.0.0
 ENV project_name metriccalculator
 
 RUN cp target/${project_name}-${project_version}-bin.tar.gz /opt/app/${project_name}-${project_version}-bin.tar.gz
