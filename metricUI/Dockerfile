@@ -32,6 +32,10 @@ ENV JETSTREAM_CONFIG_VERSION 1.0
 ENV JETSTREAM_ZKSERVER_HOST zkserver
 ENV JETSTREAM_ZKSERVER_PORT 2181
 ENV JETSTREAM_MONGOURL mongo://mongoserver:27017/config
+ENV METRIC_SERVER_HOST metricservice
+ENV METRIC_SERVER_PORT 8083
+ENV METRIC_CALCULATOR_HOST metriccalculator
+ENV METRIC_CALCULATOR_PORT 9999
 
 #Suggested production JAVA_OPS for Open JDK.
 #ENV JETSTREAM_JAVA_OPTS -server -Xms6g -Xmx6g -XX:+UseConcMarkSweepGC -XX:+UseParNewGC -XX:+UseCompressedOops -X:MaxTenuringThreshold=8 -XX:CMSInitiatingOccupancyFraction=75 -XX:MaxNewSize=3g -XX:NewSize=3g -XX:+CMSConcurrentMTEnabled -XX:+CMSScavengeBeforeRemark 
