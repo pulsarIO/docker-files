@@ -14,10 +14,13 @@ RUN git checkout jetstream-root-4.0.1
 WORKDIR /opt/jetstream
 RUN mvn -DskipTests clean install
 
+WORKDIR /opt/jetstream/configurationmanagement
+RUN mvn -DskipTests install
+
 ENV project_version 4.0.1
 ENV project_name configuration
 
-RUN cp configurationmanagement/target/${project_name}-${project_version}-bin.tar.gz /opt/app/${project_name}-${project_version}-bin.tar.gz
+RUN cp target/${project_name}-${project_version}-bin.tar.gz /opt/app/${project_name}-${project_version}-bin.tar.gz
 WORKDIR /opt/app
 RUN tar -zxvf ${project_name}-${project_version}-bin.tar.gz
 RUN ln -s /opt/app/${project_name}-${project_version} jetstreamapp
