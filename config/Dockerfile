@@ -9,10 +9,10 @@ RUN echo "LANG=C.UTF-8" > /etc/default/locale
 RUN mkdir -p /opt/app
 WORKDIR /opt/app
 
-ENV project_version 4.0.1
+ENV project_version 4.0.2
 ENV project_name configuration
 
-RUN wget http://repo1.maven.org/maven2/com/ebay/jetstream/${project_name}/4.0.1/${project_name}-${project_version}-bin.tar.gz 
+RUN wget http://repo1.maven.org/maven2/com/ebay/jetstream/${project_name}/${project_version}/${project_name}-${project_version}-bin.tar.gz 
 
 RUN tar -zxvf ${project_name}-${project_version}-bin.tar.gz
 RUN ln -s /opt/app/${project_name}-${project_version} jetstreamapp
