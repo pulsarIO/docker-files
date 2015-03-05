@@ -9,10 +9,18 @@ RUN echo "LANG=C.UTF-8" > /etc/default/locale
 RUN mkdir -p /opt/app
 WORKDIR /opt/app
 
+WORKDIR /opt
+RUN git clone https://github.com/pulsarIO/jetstream.git
+WORKDIR /opt/jetstream/
+RUN git checkout jetstream-root-4.0.2
+WORKDIR /opt/jetstream/configurationmanagement
+RUN mvn -Djettyserver.version=9.2.2.v20140723 -DskipTests clean install
+
 ENV project_version 4.0.2
 ENV project_name configuration
 
-RUN wget http://repo1.maven.org/maven2/com/ebay/jetstream/${project_name}/${project_version}/${project_name}-${project_version}-bin.tar.gz 
+RUN cp target/${project_name}-${project_version}-bin.tar.gz /opt/app/${project_name}-${project_version}-bin.tar.gz
+WORKDIR /opt/app
 
 RUN tar -zxvf ${project_name}-${project_version}-bin.tar.gz
 RUN ln -s /opt/app/${project_name}-${project_version} jetstreamapp
