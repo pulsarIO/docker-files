@@ -40,5 +40,10 @@ ENV METRIC_CALCULATOR_PORT 9999
 #Suggested production JAVA_OPS for Open JDK.
 #ENV JETSTREAM_JAVA_OPTS -server -Xms6g -Xmx6g -XX:+UseConcMarkSweepGC -XX:+UseParNewGC -XX:+UseCompressedOops -X:MaxTenuringThreshold=8 -XX:CMSInitiatingOccupancyFraction=75 -XX:MaxNewSize=3g -XX:NewSize=3g -XX:+CMSConcurrentMTEnabled -XX:+CMSScavengeBeforeRemark 
 
-EXPOSE 9999
+# One http port, One context port
+ENV JETSTREAM_REST_BASEPORT 8088
+ENV JETSTREAM_CONTEXT_BASEPORT 15590
+ENV JETSTREAM_APP_PORT 9999
+
+EXPOSE 9999 15590 8088
 ENTRYPOINT ./start.sh

@@ -37,5 +37,9 @@ ENV PULSAR_CASSANDRA cassandraserver
 #Suggested production JAVA_OPS for Open JDK.
 #ENV JETSTREAM_JAVA_OPTS -server -Xms6g -Xmx6g -XX:+UseConcMarkSweepGC -XX:+UseParNewGC -XX:+UseCompressedOops -X:MaxTenuringThreshold=8 -XX:CMSInitiatingOccupancyFraction=75 -XX:MaxNewSize=3g -XX:NewSize=3g -XX:+CMSConcurrentMTEnabled -XX:+CMSScavengeBeforeRemark 
 
-EXPOSE 9999
+# One http port, no context port
+ENV JETSTREAM_REST_BASEPORT 8083
+ENV JETSTREAM_APP_PORT 9999
+
+EXPOSE 8083 9999
 ENTRYPOINT ./start.sh
