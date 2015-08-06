@@ -11,11 +11,11 @@ RUN mkdir -p /opt/app
 WORKDIR /opt
 RUN git clone https://github.com/pulsarIO/realtime-analytics.git
 WORKDIR /opt/realtime-analytics/
-RUN git checkout realtime-analytics-1.0.0
+RUN git checkout realtime-analytics-1.0.1
 WORKDIR /opt/realtime-analytics/collector
 RUN mvn -DskipTests clean install
 
-ENV project_version 1.0.0
+ENV project_version 1.0.1
 ENV project_name collector
 
 RUN cp target/${project_name}-${project_version}-bin.tar.gz /opt/app/${project_name}-${project_version}-bin.tar.gz
