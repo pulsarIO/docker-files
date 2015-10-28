@@ -1,0 +1,1 @@
+docker run -d -p 11211:11211 --name pulsarioMemcached -t -i pulsario-memcached

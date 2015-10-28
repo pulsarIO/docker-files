@@ -1,0 +1,2 @@
+docker run -p 7171:7171 -p 7272:7272 -p 9090:9090 -p 8090:8080 --add-host pulsarioReportingapi:$1 --name pulsarioReportingui -d pulsario-reportingui ./start.sh
+

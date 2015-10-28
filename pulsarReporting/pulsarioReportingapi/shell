@@ -1,0 +1,2 @@
+docker run -p 8080:8080 --add-host pulsarioDruid:$1 --add-host pulsarioMemcached:$2 --name pulsarioReportingapi -d pulsario-reportingapi ./start.sh
+
