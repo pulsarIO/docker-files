@@ -58,7 +58,7 @@
                     "auto.offset.reset": "largest",
                     "auto.commit.enable": "false"
                 },
-                "feed": "Pulsar.mobile"
+                "feed": "Pulsar.event"
             },
             "plumber": {
                 "type": "realtime"
