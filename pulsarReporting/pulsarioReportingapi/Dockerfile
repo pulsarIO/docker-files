@@ -40,6 +40,7 @@ RUN mkdir /usr/local/tomcat/webapps
 
 RUN git clone https://github.com/pulsarIO/pulsar-reporting-api.git
 WORKDIR /usr/local/tomcat/pulsar-reporting-api
+RUN git checkout pulsar-reporting-api-0.2.0
 # Copy start script
 ADD start.sh /usr/local/tomcat/pulsar-reporting-api/start.sh
 RUN chmod a+x start.sh
